@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-imdm-demo/static/css/main.f7928b1e.css",
-    "main.js": "/react-imdm-demo/static/js/main.950c6d08.js",
-    "static/js/453.842abdb7.chunk.js": "/react-imdm-demo/static/js/453.842abdb7.chunk.js",
-    "static/media/MovieLogo.jpg": "/react-imdm-demo/static/media/MovieLogo.bcba4620112d7ae852b6.jpg",
-    "index.html": "/react-imdm-demo/index.html",
-    "main.f7928b1e.css.map": "/react-imdm-demo/static/css/main.f7928b1e.css.map",
-    "main.950c6d08.js.map": "/react-imdm-demo/static/js/main.950c6d08.js.map",
-    "453.842abdb7.chunk.js.map": "/react-imdm-demo/static/js/453.842abdb7.chunk.js.map"
+    "main.css": "/twinkle0711/react-imdb-demo/static/css/main.f7928b1e.css",
+    "main.js": "/twinkle0711/react-imdb-demo/static/js/main.dcd12d56.js",
+    "static/js/453.842abdb7.chunk.js": "/twinkle0711/react-imdb-demo/static/js/453.842abdb7.chunk.js",
+    "static/media/MovieLogo.jpg": "/twinkle0711/react-imdb-demo/static/media/MovieLogo.bcba4620112d7ae852b6.jpg",
+    "index.html": "/twinkle0711/react-imdb-demo/index.html",
+    "main.f7928b1e.css.map": "/twinkle0711/react-imdb-demo/static/css/main.f7928b1e.css.map",
+    "main.dcd12d56.js.map": "/twinkle0711/react-imdb-demo/static/js/main.dcd12d56.js.map",
+    "453.842abdb7.chunk.js.map": "/twinkle0711/react-imdb-demo/static/js/453.842abdb7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f7928b1e.css",
-    "static/js/main.950c6d08.js"
+    "static/js/main.dcd12d56.js"
   ]
 }
