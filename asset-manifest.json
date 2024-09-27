@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-imdb-demo/static/css/main.f7928b1e.css",
-    "main.js": "/react-imdb-demo/static/js/main.1e7fd459.js",
+    "main.css": "/react-imdb-demo/static/css/main.f233b202.css",
+    "main.js": "/react-imdb-demo/static/js/main.876c51ff.js",
     "static/js/453.842abdb7.chunk.js": "/react-imdb-demo/static/js/453.842abdb7.chunk.js",
     "static/media/MovieLogo.jpg": "/react-imdb-demo/static/media/MovieLogo.bcba4620112d7ae852b6.jpg",
     "index.html": "/react-imdb-demo/index.html",
-    "main.f7928b1e.css.map": "/react-imdb-demo/static/css/main.f7928b1e.css.map",
-    "main.1e7fd459.js.map": "/react-imdb-demo/static/js/main.1e7fd459.js.map",
+    "main.f233b202.css.map": "/react-imdb-demo/static/css/main.f233b202.css.map",
+    "main.876c51ff.js.map": "/react-imdb-demo/static/js/main.876c51ff.js.map",
     "453.842abdb7.chunk.js.map": "/react-imdb-demo/static/js/453.842abdb7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7928b1e.css",
-    "static/js/main.1e7fd459.js"
+    "static/css/main.f233b202.css",
+    "static/js/main.876c51ff.js"
   ]
 }
