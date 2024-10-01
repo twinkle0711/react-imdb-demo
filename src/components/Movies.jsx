@@ -3,7 +3,7 @@ import Card from './Card'
 import axios from 'axios'
 import Pagination from './Pagination';
 
-function Movies() {
+function Movies({ handleAddToWatchlist, handleRemoveFromWatchlist, watchlist }) {
   const [movies, setMovies] = useState([])
   const [pageNo, setPageNo] = useState(1)
 
@@ -35,7 +35,13 @@ function Movies() {
       <div className='flex flex-row flex-wrap justify-around gap-8'>
         {
           movies.map((movie) => {
-            return <Card poster_path={movie.poster_path} name={movie.original_title} />
+            return <Card key={movie.id}
+              movie={movie}
+              poster_path={movie.poster_path}
+              name={movie.original_title}
+              handleAddToWatchlist={handleAddToWatchlist}
+              handleRemoveFromWatchlist={handleRemoveFromWatchlist}
+              watchlist={watchlist} />
           })
         }
       </div>
