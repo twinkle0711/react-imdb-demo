@@ -5,7 +5,7 @@ import Watchlist from './components/Watchlist';
 
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Banner from './components/Banner';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
 
   let handleAddToWatchlist = (movie) => {
     let newWatchlist = [...watchlist, movie];
+    localStorage.setItem('moviesApp', JSON.stringify(newWatchlist));
     setWatchlist(newWatchlist);
   }
 
@@ -21,8 +22,18 @@ function App() {
       return movieObj.id !== movie.id;
     })
 
+    localStorage.setItem('moviesApp', JSON.stringify(filteredWatchlist));
     setWatchlist(filteredWatchlist);
   }
+
+  useEffect(() => {
+    let moviesFromLocalStorage = localStorage.getItem('moviesApp');
+    if (!moviesFromLocalStorage) {
+      return;
+    }
+
+    setWatchlist(JSON.parse(moviesFromLocalStorage));
+  },[])
 
   return (
     <div>
@@ -46,7 +57,9 @@ function App() {
               </>}>
           </Route>
 
-          <Route path='/watchlist' element={<Watchlist />}></Route>
+          <Route path='/watchlist'
+            element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist} />}>
+          </Route>
         </Routes>
       </HashRouter>
     </div>
