@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import genreids from '../utility/genre'
 
-function Watchlist({ watchlist, setWatchlist }) {
+function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
 
   const [search, setSearch] = useState('');
+  const [genreList, setGenreList] = useState(['All Genres']);
+  const [currentGenre, setCurrentGenre] = useState('All Genres');
+
   let handleSearch = (e) => {
     setSearch(e.target.value);
+  };
+
+  let handleFilter = (genre) => {
+    setCurrentGenre(genre);
   };
 
   let sortIncreasing = () => {
@@ -23,11 +31,26 @@ function Watchlist({ watchlist, setWatchlist }) {
     setWatchlist([...sorted]);
   }
 
+  useEffect(() => {
+    let temp = watchlist.map(movieObj => {
+      return genreids[movieObj.genre_ids[0]];
+    });
+
+    temp = new Set(temp);
+    setGenreList(['All Genres', ...temp]);
+  }, [watchlist]);
+
   return (
     <>
       <div className='flex justify-center flex-wrap m-4'>
-        <div className='flex justify-center items-center h-[3rem] w-[9rem] bg-blue-400 rounded-xl text-white font-bold mx-4'>Action</div>
-        <div className='flex justify-center items-center h-[3rem] w-[9rem] bg-gray-400/50 rounded-xl text-white font-bold'>Action</div>
+        {genreList.map((genre) => {
+          return <div key={genre} onClick={() => handleFilter(genre)}
+            className={currentGenre === genre ?
+              'flex justify-center items-center h-[3rem] w-[9rem] bg-blue-400 rounded-xl text-white font-bold mx-4' :
+              'flex justify-center items-center h-[3rem] w-[9rem] bg-gray-400/50 rounded-xl text-white font-bold mx-4'}>
+            {genre}
+          </div>
+        })}
       </div>
 
       <div className='flex justify-center my-4'>
@@ -45,7 +68,7 @@ function Watchlist({ watchlist, setWatchlist }) {
                 <div className='p-2'>Ratings</div>
                 <div onClick={sortDecreasing} className='p-2'><i className="fa-solid fa-arrow-down"></i></div>
               </th>
-              
+
               <th>Popularity</th>
               <th>Genre</th>
             </tr>
@@ -53,22 +76,31 @@ function Watchlist({ watchlist, setWatchlist }) {
 
           <tbody>
 
-            {watchlist.filter(movie => {
-              return movie.title.toLowerCase().includes(search.toLowerCase());
-            }).map((movie) => {
-              return <tr key={movie.id} className='border-b-2'>
-                <td className='flex items-center px-6 py-4'>
-                  <img className='h-[6rem] w-[10rem]' src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=''></img>
-                  <div className='mx-10'>{movie.title}</div>
-                </td>
+            {watchlist
+              .filter(movie => {
+                if (currentGenre === 'All Genres') {
+                  return true;
+                } else {
+                  return genreids[movie.genre_ids[0]] === currentGenre;
+                }
+              })
+              .filter(movie => {
+                return movie.title.toLowerCase().includes(search.toLowerCase());
+              })
+              .map((movie) => {
+                return <tr key={movie.id} className='border-b-2'>
+                  <td className='flex items-center px-6 py-4'>
+                    <img className='h-[6rem] w-[10rem]' src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt=''></img>
+                    <div className='mx-10'>{movie.title}</div>
+                  </td>
 
-                <td>{movie.vote_average}</td>
-                <td>{movie.popularity}</td>
-                <td>Action</td>
+                  <td>{movie.vote_average}</td>
+                  <td>{movie.popularity}</td>
+                  <td>{genreids[movie.genre_ids[0]]}</td>
 
-                <td className='text-red-800'>Delete</td>
-              </tr>
-            })}
+                  <td onClick={() => handleRemoveFromWatchlist(movie)} className='text-red-800'>Delete</td>
+                </tr>
+              })}
 
           </tbody>
         </table>

@@ -58,7 +58,7 @@ function App() {
           </Route>
 
           <Route path='/watchlist'
-            element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist} />}>
+            element={<Watchlist watchlist={watchlist} setWatchlist={setWatchlist} handleRemoveFromWatchlist={handleRemoveFromWatchlist} />}>
           </Route>
         </Routes>
       </HashRouter>
